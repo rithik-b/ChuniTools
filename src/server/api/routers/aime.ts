@@ -27,7 +27,7 @@ function generateRandomID() {
   return result
 }
 
-export const aimeRouter = createTRPCRouter({
+const aimeRouter = createTRPCRouter({
   setCurrentProfile: publicProcedure
     .input(z.string().length(20))
     .mutation(({ input }) => {
@@ -83,3 +83,5 @@ export const aimeRouter = createTRPCRouter({
       db.delete(profilesTable).where(eq(profilesTable.id, input)).run()
     }),
 })
+
+export default aimeRouter
